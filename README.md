@@ -1,3 +1,170 @@
+        ===- REST API Entry points -===
+POST
+api/registration
+body:
+{
+    name: '',
+    login: '',
+    password: ''
+}
+response:
+{
+    id: 1,
+    name: '',
+    login: ''
+}
+
+
+POST
+api/authorization
+body: 
+{
+    login: '',
+    password: ''
+}
+response:
+{
+    status: ''
+}
+
+
+GET
+api/photo
+params: 
+q: [animal, auto, architecture]
+
+response:
+{
+    photos: [
+        {
+            id: 1,
+            smallUrl: ''
+        },
+        {
+            id: 1,
+            smallUrl: ''
+        }
+    ]
+}
+
+
+
+GET
+api/photo/:id
+response:
+{
+    id: 1,
+    smallUrl: '',
+    bigUrl: '',
+    comments: [
+        {
+            id: 1,
+            author: {
+                id: 1,
+                name: ''
+            },
+            content: '',
+            date: ''
+        }
+    ],
+    likes: [
+        {
+            id: 1,
+            author: {
+                id: 1,
+                name: ''
+            },
+            date: ''
+        }
+    ]
+}
+
+
+
+
+POST
+api/comments
+body: 
+{
+    imgId: 1,
+    userId: 1,
+    content: ''
+}
+response:
+{
+    id: 1,
+    author: {
+        id: 1,
+        name: ''
+    },
+    content: '',
+    date: ''
+}
+
+
+
+POST
+api/likes
+body:
+{
+    imgId: 1,
+    userId: 1,
+}
+response:
+{
+    id: 1,
+    author: {
+        id: 1,
+        name: ''
+    },
+    date: ''
+}
+
+
+
+
+
+===- Data Base -===
+
+user {
+    id int
+    name varchar
+    login varchar
+    password varchar
+}
+
+
+photo {
+    id int
+    smallUrl varchar
+    bigUrl varchar
+}
+
+
+
+comment {
+    id int
+    content varchar
+    date date
+    userId int FK
+    photoId int FK
+}
+
+
+like {
+    id int
+    userId int FK
+    photoId int FK
+}
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
